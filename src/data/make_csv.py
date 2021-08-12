@@ -7,6 +7,8 @@ import download_data
 def create_csv(RAW_DATA_PATH=".\\data\\raw"):
     """ Create CSV file out of text files stored in various folder
     """
+    
+    download_data.main()
 
     SUB_FOLDERS = list(
         os.walk(RAW_DATA_PATH + "\\EMG_data_for_gestures-master"))[1:]
@@ -29,5 +31,4 @@ def create_csv(RAW_DATA_PATH=".\\data\\raw"):
 
 
 if __name__ == '__main__':
-    download_data.main()
     create_csv()
