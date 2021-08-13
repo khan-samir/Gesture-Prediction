@@ -25,7 +25,7 @@ def create_csv(RAW_DATA_PATH=".\\data\\raw"):
     Final_df = pd.concat(DATAFRAMES)
 
     datetime_ = datetime.datetime.now().strftime("%d-%m-%y-%H-%M-%S")
-    Final_df.to_csv(f".\\data\\interim\\gesture-prediction-{datetime_}.csv")
+    Final_df.to_csv(f".\\data\\interim\\gesture-prediction-{datetime_}.csv", index=False)
 
     return Final_df
 
