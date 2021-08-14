@@ -2,11 +2,7 @@ import os
 from urllib.request import urlopen
 from io import BytesIO
 from zipfile import ZipFile
-
-# importing config file
-import sys
-sys.path.insert(0, "./src/config")
-from config import read_params
+from src.config.config import read_params
 
 
 def download_and_unzip():

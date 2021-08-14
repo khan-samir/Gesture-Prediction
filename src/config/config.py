@@ -1,6 +1,8 @@
+import os
 import yaml
 
-CONFIG_PATH = 'src\config\config.yml'
+dir_path = os.path.dirname(os.path.realpath(__file__))
+CONFIG_PATH = dir_path + '\config.yml'
 
 
 def read_params(config_path=CONFIG_PATH):

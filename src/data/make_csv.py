@@ -2,11 +2,7 @@ import os
 import datetime
 import pandas as pd
 import download_data
-
-# importing config file
-import sys
-sys.path.insert(0, "./src/config")
-from config import read_params
+from src.config.config import read_params
 
 
 def create_csv():
