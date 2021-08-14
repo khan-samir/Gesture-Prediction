@@ -3,31 +3,36 @@ import datetime
 import pandas as pd
 import download_data
 
+# importing config file
+import sys
+sys.path.insert(0, "./src/config")
+from config import read_params
 
-def create_csv(RAW_DATA_PATH=".\\data\\raw"):
+
+def create_csv():
     """ Create CSV file out of text files stored in various folder
     """
-    
+    config = read_params()
     download_data.main()
 
-    SUB_FOLDERS = list(
-        os.walk(RAW_DATA_PATH + "\\EMG_data_for_gestures-master"))[1:]
+    sub_folders = list(
+        os.walk(config['data']['raw'] + "\\EMG_data_for_gestures-master"))[1:]
 
-    FILE_PATHS = []
-    for SUB_FOLDER in SUB_FOLDERS:
-        for FILE in SUB_FOLDER[2]:
-            FILE_PATHS.append(SUB_FOLDER[0] + "\\" + FILE)
+    file_paths = []
+    for sub_folder in sub_folders:
+        for FILE in sub_folder[2]:
+            file_paths.append(sub_folder[0] + "\\" + FILE)
 
-    DATAFRAMES = []
-    for FILE_PATH in FILE_PATHS:
-        df = pd.read_csv(FILE_PATH, delimiter='\t')
-        DATAFRAMES.append(df)
-    Final_df = pd.concat(DATAFRAMES)
+    dataframes = []
+    for file_path in file_paths:
+        df = pd.read_csv(file_path, delimiter='\t')
+        dataframes.append(df)
+    final_df = pd.concat(dataframes)
 
     datetime_ = datetime.datetime.now().strftime("%d-%m-%y-%H-%M-%S")
-    Final_df.to_csv(f".\\data\\interim\\gesture-prediction-{datetime_}.csv", index=False)
+    final_df.to_csv(f"{config['data']['interim']}\\gesture-prediction-{datetime_}.csv", index=False)
 
-    return Final_df
+    return final_df
 
 
 if __name__ == '__main__':

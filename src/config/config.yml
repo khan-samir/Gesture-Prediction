@@ -1,0 +1,6 @@
+data:
+  url: "https://archive.ics.uci.edu/ml/machine-learning-databases/00481/EMG_data_for_gestures-master.zip"
+  raw: '.\data\raw'
+  interim: '.\data\interim'
+  processed: '.\data\processed'
+  external: '.\data\external'
