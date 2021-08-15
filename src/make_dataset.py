@@ -9,6 +9,9 @@ from config.config import read_params
 
 
 def download_and_unzip():
+    """
+    Download and extract data from given URL
+    """
     config = read_params()
     print("Downloading dataset")
     http_response = urlopen(config['data']['url'])
@@ -18,6 +21,9 @@ def download_and_unzip():
 
 
 def make_dir():
+    """
+    Check and create directory to store data if does not exist
+    """
     config = read_params()
     if not os.path.isdir(os.path.join(config['data']['raw'], "EMG_data_for_gestures-master")):
         download_and_unzip()
@@ -30,7 +36,8 @@ def make_dir():
 
 
 def create_csv():
-    """ Create CSV file out of text files stored in various folder
+    """
+    Create CSV file out of text files stored in various folder
     """
     config = read_params()
     make_dir()
